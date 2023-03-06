@@ -4,7 +4,7 @@ void StartTimer()
 {
     TabataTimer time = new TabataTimer();
 
-    time.PrintFirstMenu();
+    time.PrintMenu();
 }
 
 StartTimer();
@@ -49,7 +49,7 @@ class TabataTimer
         }
     }
 
-    void PrintMenu()
+    public void PrintMenu()
     {
         Console.WriteLine("-----Menu-----");
         Console.WriteLine("1. Simple Timer(Optional Points:reptition count timer 25-5)");
@@ -77,7 +77,7 @@ class TabataTimer
     }
 
     //Starting point of the Program where optional stuff could be set
-    public void PrintFirstMenu()
+    void PrintFirstMenu()
     {
 
         Console.WriteLine("Welcome to the Tabata timer!");
@@ -104,13 +104,13 @@ class TabataTimer
         PrintTimer(workName,pauseName);
     }
 
-    void PrintTimer(string workName = "",string pauseName = "")
+    void PrintTimer(string workName = "Work",string pauseName = "Pause")
     {
         while (repititions > 0)
         {
-            TimerLoopOutput(25, repititions, "---Work---");
+            TimerLoopOutput(25, repititions, "---" + workName + "---");
             BringConsoleToFront();
-            TimerLoopOutput(5, repititions, "---Pause---");
+            TimerLoopOutput(5, repititions, "---" + pauseName + "---");
             repititions--;
         }
     }
