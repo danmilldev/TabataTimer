@@ -67,6 +67,7 @@ class TabataTimer
                 PrintFirstMenu();
                 break;
             case 2:
+                PrintSecondMenu();
                 break;
             case 3:
                 break;
@@ -87,7 +88,23 @@ class TabataTimer
         PrintTimer();
     }
 
-    void PrintTimer()
+    void PrintSecondMenu()
+    {
+        Console.WriteLine("Welcome to the Tabata timer!");
+        Console.WriteLine("How often do you want to repeat your session?");
+        Console.Write("Repitition Count: ");
+        repititions = Convert.ToInt32(Console.ReadLine());
+
+        Console.WriteLine("Workname: ");
+        string workName = Console.ReadLine();
+
+        Console.WriteLine("Pausename: ");
+        string pauseName = Console.ReadLine();
+
+        PrintTimer(workName,pauseName);
+    }
+
+    void PrintTimer(string workName = "",string pauseName = "")
     {
         while (repititions > 0)
         {
