@@ -70,6 +70,7 @@ class TabataTimer
                 PrintSecondMenu();
                 break;
             case 3:
+                PrintThirdMenu();
                 break;
             default:
                 break;
@@ -104,13 +105,35 @@ class TabataTimer
         PrintTimer(workName,pauseName);
     }
 
-    void PrintTimer(string workName = "Work",string pauseName = "Pause")
+    void PrintThirdMenu()
+    {
+        Console.WriteLine("Welcome to the Tabata timer!");
+        Console.WriteLine("How often do you want to repeat your session?");
+        Console.Write("Repitition Count: ");
+        repititions = Convert.ToInt32(Console.ReadLine());
+
+        Console.WriteLine("Workname: ");
+        string workName = Console.ReadLine();
+
+        Console.WriteLine("Pausename: ");
+        string pauseName = Console.ReadLine();
+
+        Console.WriteLine("Worktime: ");
+        int workMinutes = Convert.ToInt32(Console.ReadLine());
+
+        Console.WriteLine("PauseMinutes");
+        int pauseMinutes = Convert.ToInt32(Console.ReadLine());
+
+        PrintTimer(workName, pauseName,workMinutes,pauseMinutes);
+    }
+
+    void PrintTimer(string workName = "Work",string pauseName = "Pause",int workMinutes = 25, int pauseMinutes = 5)
     {
         while (repititions > 0)
         {
-            TimerLoopOutput(25, repititions, "---" + workName + "---");
+            TimerLoopOutput(workMinutes - 1, repititions, "---" + workName + "---");
             BringConsoleToFront();
-            TimerLoopOutput(5, repititions, "---" + pauseName + "---");
+            TimerLoopOutput(pauseMinutes - 1, repititions, "---" + pauseName + "---");
             repititions--;
         }
     }
