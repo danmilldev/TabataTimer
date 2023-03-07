@@ -1,17 +1,15 @@
 ﻿using System.Runtime.InteropServices;
 
-void StartTimer()
-{
-    TabataTimer time = new TabataTimer();
-
-    time.PrintMenu();
-}
-
-StartTimer();
+//Program start 
+TabataTimer time = new TabataTimer();
+time.PrintMenu();
 
 
 class TabataTimer
 {
+    //variables
+    int repititions;
+
     //Needed for setting console window into foreground
     [DllImport("kernel32.dll", ExactSpelling = true)]
     static extern IntPtr GetConsoleWindow();
@@ -24,9 +22,6 @@ class TabataTimer
     [return: MarshalAs(UnmanagedType.Bool)]
     static extern bool ShowWindow(IntPtr hWnd, int nCmdShow);
 
-    //variables
-    int repititions;
-
     void BringConsoleToFront()
     {
 
@@ -34,6 +29,7 @@ class TabataTimer
         ShowWindow(GetConsoleWindow(), 9);
     }
 
+    //Main TimeLoop for the time output in the console
     void TimerLoopOutput(int min, int reps, string text)
     {
         for (int minutes = min; minutes >= 0; minutes--)
@@ -49,6 +45,7 @@ class TabataTimer
         }
     }
 
+    //printing the menu to the user and letting select one of the options
     public void PrintMenu()
     {
         Console.WriteLine("-----Menu-----");
@@ -77,7 +74,6 @@ class TabataTimer
         }
     }
 
-    //Starting point of the Program where optional stuff could be set
     void PrintFirstMenu()
     {
 
@@ -127,6 +123,7 @@ class TabataTimer
         PrintTimer(workName, pauseName,workMinutes,pauseMinutes);
     }
 
+    //uses all information gathered from the user and uses the main time method to let the work session get started
     void PrintTimer(string workName = "Work",string pauseName = "Pause",int workMinutes = 25, int pauseMinutes = 5)
     {
         while (repititions > 0)
