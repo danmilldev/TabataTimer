@@ -54,23 +54,29 @@ class TabataTimer
         Console.WriteLine("3. advanced timer(Optional Points:repition count - naming - time of routines");
         Console.Write("Selection: ");
 
-        int SelectionNumber;
+        var result = int.TryParse(Console.ReadLine(), out int SelectionNumber );
 
-        SelectionNumber = Convert.ToInt32(Console.ReadLine());
-
-        switch (SelectionNumber)
+        if(result)
         {
-            case 1:
-                PrintFirstMenu();
-                break;
-            case 2:
-                PrintSecondMenu();
-                break;
-            case 3:
-                PrintThirdMenu();
-                break;
-            default:
-                break;
+            switch (SelectionNumber)
+            {
+                case 1:
+                    PrintFirstMenu();
+                    break;
+                case 2:
+                    PrintSecondMenu();
+                    break;
+                case 3:
+                    PrintThirdMenu();
+                    break;
+                default:
+                    break;
+            }
+        }
+        else
+        {
+            Console.Clear();
+            PrintMenu();
         }
     }
 
